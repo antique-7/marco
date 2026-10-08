@@ -315,6 +315,12 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .exp-item:nth-child(8)::before{animation-delay:-5.3s}
 @keyframes border-glow{to{--border-angle:360deg}}
 @media (prefers-reduced-motion:reduce){.exp-item::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 300deg,rgba(216,161,90,.4) 350deg,transparent 360deg)}}
+/* ===== 精选作品：唯一主目录（可折叠） ===== */
+.works-master{max-height:0;overflow:hidden;transition:max-height .9s cubic-bezier(.22,1,.36,1)}
+.works-master[data-open="1"]{max-height:6000px;overflow:visible}
+.works-master-head{cursor:pointer;position:relative}
+.works-master-head .master-open{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:12px;letter-spacing:3px;color:var(--copper);border:1px solid var(--copper);border-radius:999px;padding:10px 22px;transition:background .35s ease,color .35s ease}
+.works-master-head:hover .master-open{background:var(--copper);color:var(--paper)}
 .exp-item img{width:100%;height:230px;object-fit:cover;display:block}
 .exp-item.exp-fill img{object-fit:contain;background:#fbfaf7;padding:10px;object-position:center}
 .exp-item figcaption{padding:12px 14px;font-size:12px;color:var(--ink-soft);letter-spacing:.4px;border-top:1px solid var(--line)}
@@ -678,14 +684,16 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 
 <section class="works" id="works">
   <div class="container">
-    <div class="sec-head">
+    <div class="sec-head works-master-head" role="button" tabindex="0" aria-expanded="false">
       <div class="sec-no">05 — SELECTED WORKS</div>
       <h2 class="sec-title serif">精选作品</h2>
       <div class="sec-title-en">SELECTED WORKS</div>
       <div class="sec-desc">以空间类型为线索，呈现不同居住场景中的尺度感、情绪与生活秩序。图片陆续补充中。</div>
+      <span class="master-open">展开四分类 ▾</span>
     </div>
   </div>
 
+  <div class="works-master" data-open="0" aria-hidden="true">
   <div class="work-cat">
     <div class="cat-head">
       <span class="cat-idx">01</span>
@@ -1561,6 +1569,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       </div>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- ===== 结尾 ===== -->
@@ -2131,6 +2140,39 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       Array.prototype.forEach.call(document.querySelectorAll('.acc-gallery .acc-item'), function(x){ x.classList.remove('active'); });
       if(!was) item.classList.add('active');
     });
+  });
+})();
+
+/* ===== 精选作品：唯一主目录 折叠/展开（真实高度过渡） ===== */
+(function(){
+  var head = document.querySelector('.works-master-head');
+  var master = document.querySelector('.works-master');
+  if(!head || !master) return;
+  var lbl = head.querySelector('.master-open');
+  function setOpen(open){
+    master.setAttribute('data-open', open ? '1' : '0');
+    master.setAttribute('aria-hidden', open ? 'false' : 'true');
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if(open){
+      master.style.maxHeight = '0px';
+      void master.offsetHeight;
+      master.style.maxHeight = master.scrollHeight + 'px';
+    } else {
+      master.style.maxHeight = master.scrollHeight + 'px';
+      void master.offsetHeight;
+      master.style.maxHeight = '0px';
+    }
+    if(lbl) lbl.textContent = open ? '收起四分类 ▲' : '展开四分类 ▾';
+    if(window.ScrollTrigger) window.ScrollTrigger.refresh();
+  }
+  head.addEventListener('click', function(){
+    var open = master.getAttribute('data-open') === '1';
+    setOpen(!open);
+  });
+  master.addEventListener('transitionend', function(e){
+    if(e.propertyName === 'max-height' && master.getAttribute('data-open') === '1'){
+      master.style.maxHeight = 'none';
+    }
   });
 })();
 
