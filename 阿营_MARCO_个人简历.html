@@ -415,8 +415,9 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .yh-card .cap b{display:block;font-size:17px;letter-spacing:2px;font-weight:500}
 .yh-card .cap small{display:block;font-size:11px;letter-spacing:2px;color:rgba(244,240,228,.72);margin-top:3px}
 .yh-open{display:block;margin-top:8px;font-size:11px;letter-spacing:2px;color:var(--copper-soft);font-style:normal}
-.sub-project[data-open="0"]{max-height:0;overflow:hidden;transition:max-height .6s ease;margin-top:0;border-top:none;padding-top:0}
-.sub-project[data-open="1"]{max-height:32000px;overflow:hidden;transition:max-height .6s ease;margin-top:36px;border-top:1px solid var(--line);padding-top:30px}
+.sub-project{overflow:hidden;transition:max-height .6s cubic-bezier(.22,1,.36,1)}
+.sub-project[data-open="0"]{max-height:0;margin-top:0;border-top:none;padding-top:0}
+.sub-project[data-open="1"]{margin-top:36px;border-top:1px solid var(--line);padding-top:30px}
 .sp-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .sp-idx{font-family:"Noto Serif SC",serif;font-size:12px;letter-spacing:2px;color:var(--copper)}
 .sp-head h4{margin:0;font-size:22px;font-weight:400;letter-spacing:2px}
@@ -2059,18 +2060,39 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   });
 })();
 
-/* ===== 昱湖一号项目卡：点击展开子项目 ===== */
-Array.prototype.forEach.call(document.querySelectorAll('.yh-card[data-project]'), function(card){
-  card.addEventListener('click', function(ev){
-    ev.preventDefault();
-    var sp = document.getElementById('yuhu');
-    if(!sp) return;
-    var open = sp.getAttribute('data-open') === '1';
-    sp.setAttribute('data-open', open ? '0' : '1');
-    var em = card.querySelector('.yh-open');
-    if(em) em.textContent = open ? '展开子项目 ▾' : '收起 ▲';
+/* ===== 昱湖一号项目卡：点击展开/收起子项目 =====
+   收起用真实高度过渡（避免原 32000px max-height 引发的整块重排卡顿） */
+(function(){
+  var sp = document.getElementById('yuhu');
+  if(!sp) return;
+  Array.prototype.forEach.call(document.querySelectorAll('.yh-card[data-project]'), function(card){
+    card.addEventListener('click', function(ev){
+      ev.preventDefault();
+      var open = sp.getAttribute('data-open') === '1';
+      var targetOpen = !open;
+      if(targetOpen){
+        sp.style.maxHeight = '0px';
+        sp.setAttribute('data-open','1');
+        var h = sp.scrollHeight;
+        sp.style.maxHeight = h + 'px';
+      } else {
+        sp.setAttribute('data-open','0');
+        sp.style.maxHeight = sp.scrollHeight + 'px';
+        void sp.offsetHeight;            /* 强制 reflow，让过渡从当前真实高度开始 */
+        sp.style.maxHeight = '0px';
+      }
+      var em = card.querySelector('.yh-open');
+      if(em) em.textContent = targetOpen ? '收起 ▲' : '展开子项目 ▾';
+      if(window.ScrollTrigger) window.ScrollTrigger.refresh();
+    });
   });
-});
+  /* 展开动画结束后解除 max-height 上限，避免图片懒加载后被裁剪 */
+  sp.addEventListener('transitionend', function(e){
+    if(e.propertyName === 'max-height' && sp.getAttribute('data-open') === '1'){
+      sp.style.maxHeight = 'none';
+    }
+  });
+})();
 
 </script>
 
