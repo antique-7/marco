@@ -175,6 +175,14 @@ section{padding:110px 0}
   .gallery .wk.dock-active,.gallery .yh-card.dock-active{transform:scale(1.05);z-index:2;box-shadow:0 26px 60px -36px rgba(90,60,20,.5)}
   .gallery .wk.dock-adj,.gallery .yh-card.dock-adj{transform:scale(.965)}
 }
+/* ===== 回到顶部按钮 ===== */
+#toTop{position:fixed;right:28px;bottom:28px;width:50px;height:50px;border-radius:50%;border:1px solid rgba(255,255,255,.16);background:rgba(32,30,24,.74);color:var(--copper-soft);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:900;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .45s ease,visibility .45s ease,transform .45s cubic-bezier(.22,1,.36,1),background .3s ease,color .3s ease;box-shadow:0 10px 30px -12px rgba(0,0,0,.4)}
+#toTop.show{opacity:1;visibility:visible;transform:translateY(0)}
+#toTop:hover{background:var(--copper);color:var(--paper);transform:translateY(-3px)}
+#toTop:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+#toTop svg{transition:transform .35s cubic-bezier(.22,1,.36,1)}
+#toTop:hover svg{transform:translateY(-2px)}
+@media(max-width:640px){#toTop{right:16px;bottom:16px;width:46px;height:46px}}
 .cat-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .cat-idx{font-family:"Noto Serif SC",serif;font-size:13px;letter-spacing:2px;color:var(--copper)}
 .cat-name{font-size:clamp(28px,4vw,40px);font-weight:400;letter-spacing:2px}
@@ -2212,6 +2220,30 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   /* ===== hero 轻微 parallax（内容上移，背景静止以保 halftone） ===== */
   gsap.to('.hero-inner', {yPercent:-9, ease:'none',
     scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+})();
+</script>
+
+<!-- ===== 回到顶部按钮 ===== -->
+<button id="toTop" aria-label="回到顶部" title="回到顶部">
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+<script>
+(function(){
+  var btn = document.getElementById('toTop');
+  if(!btn) return;
+  var ticking = false;
+  function check(){
+    if(window.scrollY > 600) btn.classList.add('show');
+    else btn.classList.remove('show');
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){ if(!ticking){ ticking=true; requestAnimationFrame(check); } }, {passive:true});
+  check();
+  btn.addEventListener('click', function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce) window.scrollTo(0,0);
+    else window.scrollTo({top:0, behavior:'smooth'});
+  });
 })();
 </script>
 
