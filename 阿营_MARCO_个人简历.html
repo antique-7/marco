@@ -202,7 +202,7 @@ section{padding:110px 0}
 /* ===== 作品区：AccordionGallery 手风琴画廊（大量项目不拥挤） ===== */
 .acc-gallery{display:flex;gap:10px;height:430px;margin-top:36px}
 .acc-item{position:relative;flex:1 1 64px;min-width:46px;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--paper-2);cursor:pointer;transition:flex-grow .75s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
-.acc-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .55s ease,transform .9s cubic-bezier(.2,.6,.2,1)}
+.acc-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--paper-2);opacity:0;transform:scale(1.02);transition:opacity .55s ease,transform .9s cubic-bezier(.2,.6,.2,1)}
 .acc-item .acc-title{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;letter-spacing:5px;font-size:13px;color:var(--ink);white-space:nowrap;transition:opacity .35s ease;pointer-events:none}
 .acc-item .acc-cap{position:absolute;left:0;right:0;bottom:0;padding:36px 20px 16px;background:linear-gradient(transparent,rgba(20,18,12,.82));color:#f4f0e4;opacity:0;transition:opacity .5s ease;pointer-events:none;white-space:nowrap}
 .acc-item .acc-cap b{display:block;font-size:15px;letter-spacing:1px;font-weight:400}
@@ -702,7 +702,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     <div class="cat-desc">在开阔尺度中寻找克制的秩序，让公共区域与私人情绪自然衔接。</div>
     <div class="acc-gallery">
       <div class="acc-item yh" role="button" tabindex="0" data-project="yuhu" aria-label="昱湖一号项目详情">
-        <img src="assets/yuhu/render_photos/01.jpg" alt="昱湖一号 效果图" loading="lazy" decoding="async">
+        <img src="assets/yuhu/render_photos/cover.png" alt="昱湖一号 效果图" loading="lazy" decoding="async">
         <span class="acc-title">昱湖一号 · 全案</span>
         <span class="acc-cap"><b>昱湖一号 · 全案</b><small>LARGE FLAT · 萃峯 17-1-1502</small><em class="yh-open">展开子项目 ▾</em></span>
       </div>
