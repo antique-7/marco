@@ -301,31 +301,67 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .toc-no{font-family:"Noto Serif SC",serif;color:var(--copper);font-size:15px;letter-spacing:2px;padding-top:2px;flex:none}
 .toc-item h4{font-size:16px;font-weight:500;margin-bottom:6px;letter-spacing:1px}
 .toc-item p{font-size:13px;color:var(--ink-soft)}
-.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.exp-item{margin:0;border:1px solid var(--line);background:var(--paper-2);overflow:hidden;position:relative;border-radius:14px}
 /* BorderGlow 发光描边：卡片边缘一条铜金色亮弧缓慢扫过 */
 @property --border-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
-.exp-item::before{content:"";position:absolute;inset:0;border-radius:14px;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--border-angle,0deg),transparent 0deg 296deg,rgba(216,161,90,.28) 316deg,rgba(216,161,90,.9) 342deg,rgba(229,184,120,.95) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-glow 6s linear infinite}
-.exp-item:nth-child(2)::before{animation-delay:-1.5s}
-.exp-item:nth-child(3)::before{animation-delay:-3s}
-.exp-item:nth-child(4)::before{animation-delay:-4.5s}
-.exp-item:nth-child(5)::before{animation-delay:-.8s}
-.exp-item:nth-child(6)::before{animation-delay:-2.3s}
-.exp-item:nth-child(7)::before{animation-delay:-3.8s}
-.exp-item:nth-child(8)::before{animation-delay:-5.3s}
+.bt-pic::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--border-angle,0deg),transparent 0deg 296deg,rgba(216,161,90,.28) 316deg,rgba(216,161,90,.9) 342deg,rgba(229,184,120,.95) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-glow 6s linear infinite}
+.bt-pic:nth-child(5)::before{animation-delay:-1.5s}
+.bt-pic:nth-child(6)::before{animation-delay:-3s}
+.bt-pic:nth-child(7)::before{animation-delay:-4.5s}
+.bt-pic:nth-child(8)::before{animation-delay:-.8s}
+.bt-pic:nth-child(9)::before{animation-delay:-2.3s}
+.bt-pic:nth-child(10)::before{animation-delay:-3.8s}
+.bt-pic:nth-child(11)::before{animation-delay:-5.3s}
 @keyframes border-glow{to{--border-angle:360deg}}
-@media (prefers-reduced-motion:reduce){.exp-item::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 300deg,rgba(216,161,90,.4) 350deg,transparent 360deg)}}
+@media (prefers-reduced-motion:reduce){.bt-pic::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 300deg,rgba(216,161,90,.4) 350deg,transparent 360deg)}}
 /* ===== 精选作品：唯一主目录（可折叠） ===== */
 .works-master{max-height:0;overflow:hidden;transition:max-height .9s cubic-bezier(.22,1,.36,1)}
 .works-master[data-open="1"]{max-height:6000px;overflow:visible}
 .works-master-head{cursor:pointer;position:relative}
 .works-master-head .master-open{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:12px;letter-spacing:3px;color:var(--copper);border:1px solid var(--copper);border-radius:999px;padding:10px 22px;transition:background .35s ease,color .35s ease}
 .works-master-head:hover .master-open{background:var(--copper);color:var(--paper)}
-.exp-item img{width:100%;height:230px;object-fit:cover;display:block}
-.exp-item.exp-fill img{object-fit:contain;background:#fbfaf7;padding:10px;object-position:center}
-.exp-item figcaption{padding:12px 14px;font-size:12px;color:var(--ink-soft);letter-spacing:.4px;border-top:1px solid var(--line)}
-@media(max-width:1000px){.exp-grid{grid-template-columns:repeat(2,1fr)}.exp-toc{grid-template-columns:1fr}}
-@media(max-width:600px){.exp-grid{grid-template-columns:1fr}.exp-item img{height:auto}}
+/* ===== 履历经历 · MagicBento 融合网格 ===== */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:148px;grid-auto-flow:dense;gap:16px;margin-top:40px}
+.bt{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
+.bt .bt-in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:26px}
+.bt .bt-lb{font-size:11px;letter-spacing:3px;color:var(--muted);margin-bottom:14px}
+.bt-career{grid-column:span 7;grid-row:span 3;background:var(--paper)}
+.bt-career .bt-in{justify-content:flex-start;padding:22px 28px}
+.bt-career .bt-k{display:flex;gap:18px;padding:15px 0;border-bottom:1px solid var(--line)}
+.bt-career .bt-k:last-child{border-bottom:0}
+.bt-career .bt-time{font-size:12px;color:var(--copper);letter-spacing:2px;flex:none;width:102px;padding-top:3px;font-variant-numeric:tabular-nums}
+.bt-career .bt-body h4{font-size:15.5px;font-weight:500;letter-spacing:.5px;margin-bottom:3px}
+.bt-career .bt-body .sub{font-size:11.5px;color:var(--copper-soft);letter-spacing:2px;margin-bottom:6px}
+.bt-career .bt-body p{font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.bt-edu{grid-column:span 5;background:var(--paper)}
+.bt-edu h4{font-size:16px;font-weight:500;margin-bottom:6px}
+.bt-edu p{font-size:12.5px;color:var(--ink-soft);line-height:1.6}
+.bt-tags{grid-column:span 7;background:var(--paper-2)}
+.bt-tags .bt-in{justify-content:center;gap:16px;padding:22px 26px}
+.bt-tags-row{display:flex;gap:12px;flex-wrap:wrap}
+.bt-tags .tag{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:9px 16px;background:var(--paper)}
+.bt-tags .tag b{font-family:"Noto Serif SC",serif;color:var(--copper);font-size:12px;letter-spacing:1px}
+.bt-tags .tag span{font-size:12.5px;color:var(--ink)}
+/* 图卡 */
+.bt-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bt-pic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,rgba(20,18,12,.78));color:#f2ecde;font-size:12px;letter-spacing:.5px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bt-cert{grid-column:span 5;grid-row:span 2}
+.bt-spass{grid-column:span 3}
+.bt-cardv{grid-column:span 3}
+.bt-cardr{grid-column:span 2}
+.bt-w{grid-column:span 3}
+@media(max-width:1000px){
+  .bento{grid-template-columns:repeat(6,1fr);grid-auto-rows:136px}
+  .bt-career,.bt-edu,.bt-tags,.bt-cert{grid-column:span 6}
+  .bt-cert{grid-row:span 2}
+  .bt-spass,.bt-cardv,.bt-cardr,.bt-w{grid-column:span 3}
+}
+@media(max-width:600px){
+  .bento{grid-template-columns:1fr;grid-auto-rows:auto}
+  .bt{min-height:158px}
+  .bt-pic{min-height:178px}
+  .bt-career{min-height:430px}
+  .bt-pic img{position:static;height:178px;width:100%}
+}
 
 
 /* ===== 项目专题：昱湖一号 ===== */
@@ -496,7 +532,6 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       <a href="#about">简介</a>
       <a href="#philosophy">理念</a>
       <a href="#career">履历</a>
-      <a href="#experience">经历</a>
       <a href="#works">作品</a>
           </div>
   </div>
@@ -593,91 +628,48 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   <div class="container">
     <div class="sec-head">
       <div class="sec-no">03 — CAREER</div>
-      <h2 class="sec-title serif">履历</h2>
-      <div class="sec-title-en">CAREER PATH</div>
+      <h2 class="sec-title serif">履历经历</h2>
+      <div class="sec-title-en">CAREER &amp; CREDENTIALS</div>
+      <div class="sec-desc">从新加坡的执业起点到如今的空间创作——资质凭证、任职经历与工作现场，汇聚成一条完整的设计履历。</div>
     </div>
-    <div class="career-grid">
-      <div class="t-item">
-        <div class="t-time">2010 – 2012</div>
-        <div class="t-dot"></div>
-        <div class="t-body">
-          <h4>Renozone Interior Design House</h4>
-          <div class="sub">SINGAPORE · 设计师</div>
-          <p>在新加坡开始室内设计执业，参与住宅与商业空间项目，建立对尺度的基础判断。</p>
+
+    <div class="bento">
+      <div class="bt bt-career">
+        <div class="bt-in">
+          <div class="bt-k"><div class="bt-time">2010 – 2012</div><div class="bt-body"><h4>Renozone Interior Design House</h4><div class="sub">SINGAPORE · 设计师</div><p>在新加坡开始室内设计执业，参与住宅与商业空间项目，建立对尺度的基础判断。</p></div></div>
+          <div class="bt-k"><div class="bt-time">2012 – 2016</div><div class="bt-body"><h4>Fis Design</h4><div class="sub">SINGAPORE · 主案设计师</div><p>担任主案设计师，独立主导私宅、餐饮与精品空间项目，深化材质、施工与审美的平衡。</p></div></div>
+          <div class="bt-k"><div class="bt-time">2017 – 至今</div><div class="bt-body"><h4>地平线设计</h4><div class="sub">CHINA · 主创设计师</div><p>回国执业，专注于别墅、大平层、样板房与园林空间设计，主导两江峯、舜山府、金科九曲河等代表项目。</p></div></div>
         </div>
       </div>
-      <div class="t-item">
-        <div class="t-time">2012 – 2016</div>
-        <div class="t-dot"></div>
-        <div class="t-body">
-          <h4>Fis Design</h4>
-          <div class="sub">SINGAPORE · 主案设计师</div>
-          <p>担任主案设计师，独立主导私宅、餐饮与精品空间项目，深化材质、施工与审美的平衡。</p>
-        </div>
-      </div>
-      <div class="t-item">
-        <div class="t-time">2017 – 至今</div>
-        <div class="t-dot"></div>
-        <div class="t-body">
-          <h4>地平线设计</h4>
-          <div class="sub">CHINA · 主创设计师</div>
-          <p>回国执业，专注于别墅、大平层、样板房与园林空间设计，主导两江峯、舜山府、金科九曲河等代表项目。</p>
-        </div>
-      </div>
-    </div>
-    <div class="edu">
-      <div class="edu-row">
-        <div class="t-time">学历</div>
-        <div class="t-dot"></div>
-        <div class="t-body">
+
+      <div class="bt bt-edu">
+        <div class="bt-in">
+          <div class="bt-lb">EDUCATION</div>
           <h4>新加坡 BCA ACADEMY 建筑学院</h4>
           <p>建筑 / 室内设计专业 · 持新加坡 SPASS 设计工作准证</p>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== 作品 ===== -->
+      <div class="bt bt-tags">
+        <div class="bt-in">
+          <div class="bt-lb">QUALIFICATIONS</div>
+          <div class="bt-tags-row">
+            <span class="tag"><b>01</b><span>资质认证</span></span>
+            <span class="tag"><b>02</b><span>执业准证</span></span>
+            <span class="tag"><b>03</b><span>任职名片</span></span>
+            <span class="tag"><b>04</b><span>现场见证</span></span>
+          </div>
+        </div>
+      </div>
 
-<!-- ===== 履历经历 ===== -->
-<section class="experience" id="experience">
-  <div class="container">
-    <div class="sec-head">
-      <div class="sec-no">04 — EXPERIENCE</div>
-      <h2 class="sec-title serif">履历经历</h2>
-      <div class="sec-title-en">EXPERIENCE &amp; CREDENTIALS</div>
-      <div class="sec-desc">执业历程中的资质凭证与工作见证——从新加坡建筑学院的专业文凭，到任职公司的名片、工作现场与团队印记。</div>
-    </div>
-
-    <div class="exp-toc">
-      <div class="toc-item">
-        <span class="toc-no">01</span>
-        <div><h4>资质认证</h4><p>新加坡建筑学院 · 室内与景观设计专业文凭</p></div>
-      </div>
-      <div class="toc-item">
-        <span class="toc-no">02</span>
-        <div><h4>执业准证</h4><p>新加坡 S PASS 工作准证 · 2011—2014</p></div>
-      </div>
-      <div class="toc-item">
-        <span class="toc-no">03</span>
-        <div><h4>任职名片</h4><p>VISUALchanges · renozone interior design house</p></div>
-      </div>
-      <div class="toc-item">
-        <span class="toc-no">04</span>
-        <div><h4>现场见证</h4><p>选样 · 布置 · 团队留影</p></div>
-      </div>
-    </div>
-
-    <div class="exp-grid">
-      <figure class="exp-item exp-fill"><img src="assets/experience/cert_bca.jpg" alt="新加坡建筑学院专业文凭" loading="lazy" decoding="async"><figcaption>新加坡建筑学院 · 室内与景观设计专业文凭</figcaption></figure>
-      <figure class="exp-item exp-fill"><img src="assets/experience/spass.jpg" alt="新加坡 S PASS 工作准证" loading="lazy" decoding="async"><figcaption>新加坡 S PASS 工作准证</figcaption></figure>
-      <figure class="exp-item exp-fill"><img src="assets/experience/card_visual.jpg" alt="VISUALchanges 名片" loading="lazy" decoding="async"><figcaption>VISUALchanges Interior Pte Ltd · 名片</figcaption></figure>
-      <figure class="exp-item exp-fill"><img src="assets/experience/card_renozone.jpg" alt="renozone 名片" loading="lazy" decoding="async"><figcaption>renozone interior design house · 名片</figcaption></figure>
-      <figure class="exp-item exp-cover"><img src="assets/experience/work_samples.jpg" alt="建材选样现场" loading="lazy" decoding="async"><figcaption>建材选样 · 现场</figcaption></figure>
-      <figure class="exp-item exp-cover"><img src="assets/experience/work_festival.jpg" alt="节庆布置现场" loading="lazy" decoding="async"><figcaption>节庆布置 · 现场</figcaption></figure>
-      <figure class="exp-item exp-cover"><img src="assets/experience/team_terrace.jpg" alt="团队留影" loading="lazy" decoding="async"><figcaption>团队留影</figcaption></figure>
-      <figure class="exp-item exp-cover"><img src="assets/experience/team_dinner.jpg" alt="团队聚餐留影" loading="lazy" decoding="async"><figcaption>团队留影</figcaption></figure>
+      <figure class="bt bt-pic bt-cert"><img src="assets/experience/cert_bca.jpg" alt="新加坡建筑学院专业文凭" loading="lazy" decoding="async"><figcaption>新加坡建筑学院 · 室内与景观设计专业文凭</figcaption></figure>
+      <figure class="bt bt-pic bt-spass"><img src="assets/experience/spass.jpg" alt="新加坡 S PASS 工作准证" loading="lazy" decoding="async"><figcaption>新加坡 S PASS 工作准证</figcaption></figure>
+      <figure class="bt bt-pic bt-cardv"><img src="assets/experience/card_visual.jpg" alt="VISUALchanges 名片" loading="lazy" decoding="async"><figcaption>VISUALchanges Interior Pte Ltd · 名片</figcaption></figure>
+      <figure class="bt bt-pic bt-cardr"><img src="assets/experience/card_renozone.jpg" alt="renozone 名片" loading="lazy" decoding="async"><figcaption>renozone interior design house · 名片</figcaption></figure>
+      <figure class="bt bt-pic bt-w"><img src="assets/experience/work_samples.jpg" alt="建材选样现场" loading="lazy" decoding="async"><figcaption>建材选样 · 现场</figcaption></figure>
+      <figure class="bt bt-pic bt-w"><img src="assets/experience/work_festival.jpg" alt="节庆布置现场" loading="lazy" decoding="async"><figcaption>节庆布置 · 现场</figcaption></figure>
+      <figure class="bt bt-pic bt-w"><img src="assets/experience/team_terrace.jpg" alt="团队留影" loading="lazy" decoding="async"><figcaption>团队留影</figcaption></figure>
+      <figure class="bt bt-pic bt-w"><img src="assets/experience/team_dinner.jpg" alt="团队聚餐留影" loading="lazy" decoding="async"><figcaption>团队留影</figcaption></figure>
     </div>
   </div>
 </section>
@@ -2206,8 +2198,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     var c = sec.className;
     if(c.indexOf('about')>=0) return sec.querySelectorAll('.about-grid > *');
     if(c.indexOf('philosophy')>=0) return sec.querySelectorAll('.phi-grid .phi');
-    if(c.indexOf('career')>=0) return sec.querySelectorAll('.t-item');
-    if(c.indexOf('experience')>=0) return sec.querySelectorAll('.toc-item');
+    if(c.indexOf('career')>=0) return sec.querySelectorAll('.bt');
     return [];
   }
   gsap.utils.toArray('section[id]').forEach(function(sec){
@@ -2281,9 +2272,6 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   gsap.fromTo('.portrait img', {clipPath:'inset(0 0 100% 0)', scale:1.18},
     {clipPath:'inset(0 0 0% 0)', scale:1, duration:1.0,
      scrollTrigger:{trigger:'.portrait-wrap', start:'top 82%', toggleActions:'restart none none reverse'}});
-  gsap.fromTo('.exp-grid .exp-item', {clipPath:'inset(0 0 100% 0)', y:26, opacity:0},
-    {clipPath:'inset(0 0 0% 0)', y:0, opacity:1, duration:.8, stagger:.12,
-     scrollTrigger:{trigger:'.exp-grid', start:'top 82%', toggleActions:'restart none none reverse'}});
 
   /* ===== hero 轻微 parallax（内容上移，背景静止以保 halftone） ===== */
   gsap.to('.hero-inner', {yPercent:-9, ease:'none',
@@ -2344,7 +2332,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     moveTo(act);
   });
   /* 滚动：当前分区对应段设为 active */
-  var ids = ['top','about','philosophy','career','experience','works'];
+  var ids = ['top','about','philosophy','career','works'];
   function onScroll(){
     var y = window.scrollY + 140;
     var cur = ids[0];
