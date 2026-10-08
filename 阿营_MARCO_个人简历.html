@@ -159,8 +159,16 @@ section{padding:110px 0}
 /* ===== 作品 ===== */
 .works{background:var(--paper)}
 .works .container{padding:0}
-.work-cat{padding:110px 40px;border-top:1px solid var(--line)}
+.work-cat{padding:110px 40px;border-top:1px solid var(--line);position:relative}
 @media(min-width:1000px){.work-cat{padding-left:64px;padding-right:64px}}
+/* Dock 式分类动效：hover 当前块放大浮起、相邻块推开 */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .work-cat{transition:transform .7s cubic-bezier(.22,1,.36,1),box-shadow .7s cubic-bezier(.22,1,.36,1)}
+  .work-cat.dock-active{transform:scale(1.028);z-index:3;box-shadow:0 34px 80px -44px rgba(90,60,20,.55)}
+  .work-cat.dock-active .cat-head{transform:scale(1.04);transform-origin:left center}
+  .work-cat.dock-adj{transform:scale(.98)}
+  .work-cat .cat-head{transition:transform .7s cubic-bezier(.22,1,.36,1)}
+}
 .cat-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .cat-idx{font-family:"Noto Serif SC",serif;font-size:13px;letter-spacing:2px;color:var(--copper)}
 .cat-name{font-size:clamp(28px,4vw,40px);font-weight:400;letter-spacing:2px}
@@ -2124,6 +2132,25 @@ Array.prototype.forEach.call(document.querySelectorAll('.yh-card[data-project]')
     if(desc) tl.fromTo(desc, {opacity:0, y:20}, {opacity:1, y:0, duration:.5}, .1);
     if(cards.length) tl.fromTo(cards, {opacity:0, y:44}, {opacity:1, y:0, duration:.6, stagger:.12}, .2);
   });
+
+  /* ===== 作品分类 Dock 式 hover（当前放大 + 相邻推开） ===== */
+  (function(){
+    if(!window.matchMedia('(hover:hover) and (prefers-reduced-motion: no-preference)').matches) return;
+    var cats = gsap.utils.toArray('.work-cat');
+    function sibs(c){ return cats.filter(function(x){return x!==c;}); }
+    cats.forEach(function(cat){
+      cat.addEventListener('mouseenter', function(){
+        var i = cats.indexOf(cat);
+        cat.classList.add('dock-active');
+        if(i>0) cats[i-1].classList.add('dock-adj');
+        if(i<cats.length-1) cats[i+1].classList.add('dock-adj');
+      });
+      cat.addEventListener('mouseleave', function(){
+        cat.classList.remove('dock-active');
+        cats.forEach(function(c){ c.classList.remove('dock-adj'); });
+      });
+    });
+  })();
 
   /* ===== 图片 clip 揭开 reveal ===== */
   gsap.fromTo('.portrait img', {clipPath:'inset(0 0 100% 0)', scale:1.18},
