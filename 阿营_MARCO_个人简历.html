@@ -199,19 +199,6 @@ section{padding:110px 0}
 .wk img{width:100%;height:340px;object-fit:cover;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
 .wk:hover img{transform:scale(1.035)}
 .wk.yh-card{display:block;text-decoration:none;cursor:pointer}
-/* ===== 昱湖一号：Folder 文件夹样式卡片 ===== */
-.yh-card.folder{display:block;text-decoration:none;cursor:pointer;background:transparent;border:none}
-.yh-card.folder .folder-tab{display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--copper);color:#f5f0e3;font-size:12.5px;letter-spacing:1px;padding:11px 16px;border-radius:13px 13px 0 0;margin:0 auto;width:76%;white-space:nowrap;position:relative;z-index:1;transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
-.yh-card.folder .folder-tab b{font-weight:500}
-.yh-card.folder .folder-tab .yh-open{font-style:normal;font-size:10px;letter-spacing:1px;opacity:.9}
-.yh-card.folder .folder-body{display:block;background:var(--paper);border:1px solid var(--line);border-top:none;border-radius:0 0 14px 14px;overflow:hidden;position:relative;transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
-.yh-card.folder .folder-body img{height:220px;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
-.yh-card.folder:hover .folder-body img{transform:scale(1.035)}
-.yh-card.folder .folder-cap{display:block;padding:12px 16px 14px;background:var(--paper)}
-.yh-card.folder .folder-cap b{display:block;font-size:14px;font-weight:500;letter-spacing:1px;color:var(--ink)}
-.yh-card.folder .folder-cap small{display:block;font-size:11px;letter-spacing:1px;color:var(--muted);margin-top:3px}
-.yh-card.folder:hover .folder-tab{transform:translateY(-2px);box-shadow:0 8px 18px -8px rgba(90,60,20,.5)}
-.yh-card.folder:hover .folder-body{transform:translateY(-2px);box-shadow:0 20px 44px -30px rgba(32,30,24,.45)}
 .wk.h-tall img{height:520px}
 .wk.h-2 img{height:420px}
 .wk .cap{
@@ -702,12 +689,9 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     </div>
     <div class="cat-desc">在开阔尺度中寻找克制的秩序，让公共区域与私人情绪自然衔接。</div>
     <div class="gallery g-2">
-      <a class="wk yh-card folder" data-project="yuhu" aria-label="昱湖一号项目详情">
-        <span class="folder-tab"><b>昱湖一号 · 全案</b><em class="yh-open">展开子项目 ▾</em></span>
-        <span class="folder-body">
-          <img src="assets/yuhu/render_photos/01.jpg" alt="昱湖一号 效果图" loading="lazy" decoding="async">
-          <span class="folder-cap"><b>昱湖一号 · 全案</b><small>LARGE FLAT · 萃峯 17-1-1502</small></span>
-        </span>
+      <a class="wk yh-card" data-project="yuhu" aria-label="昱湖一号项目详情">
+        <img src="assets/yuhu/render_photos/01.jpg" alt="昱湖一号 效果图" loading="lazy" decoding="async">
+        <span class="cap"><b>昱湖一号 · 全案</b><small>LARGE FLAT · 萃峯 17-1-1502</small><em class="yh-open">展开子项目 ▾</em></span>
       </a>
       <figure class="wk ph">
         <div class="ph-box">
