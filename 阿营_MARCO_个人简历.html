@@ -302,7 +302,19 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .toc-item h4{font-size:16px;font-weight:500;margin-bottom:6px;letter-spacing:1px}
 .toc-item p{font-size:13px;color:var(--ink-soft)}
 .exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.exp-item{margin:0;border:1px solid var(--line);background:var(--paper-2);overflow:hidden}
+.exp-item{margin:0;border:1px solid var(--line);background:var(--paper-2);overflow:hidden;position:relative;border-radius:14px}
+/* BorderGlow 发光描边：卡片边缘一条铜金色亮弧缓慢扫过 */
+@property --border-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
+.exp-item::before{content:"";position:absolute;inset:0;border-radius:14px;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--border-angle,0deg),transparent 0deg 296deg,rgba(216,161,90,.28) 316deg,rgba(216,161,90,.9) 342deg,rgba(229,184,120,.95) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-glow 6s linear infinite}
+.exp-item:nth-child(2)::before{animation-delay:-1.5s}
+.exp-item:nth-child(3)::before{animation-delay:-3s}
+.exp-item:nth-child(4)::before{animation-delay:-4.5s}
+.exp-item:nth-child(5)::before{animation-delay:-.8s}
+.exp-item:nth-child(6)::before{animation-delay:-2.3s}
+.exp-item:nth-child(7)::before{animation-delay:-3.8s}
+.exp-item:nth-child(8)::before{animation-delay:-5.3s}
+@keyframes border-glow{to{--border-angle:360deg}}
+@media (prefers-reduced-motion:reduce){.exp-item::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 300deg,rgba(216,161,90,.4) 350deg,transparent 360deg)}}
 .exp-item img{width:100%;height:230px;object-fit:cover;display:block}
 .exp-item.exp-fill img{object-fit:contain;background:#fbfaf7;padding:10px;object-position:center}
 .exp-item figcaption{padding:12px 14px;font-size:12px;color:var(--ink-soft);letter-spacing:.4px;border-top:1px solid var(--line)}
