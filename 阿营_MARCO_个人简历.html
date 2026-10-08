@@ -199,6 +199,27 @@ section{padding:110px 0}
 .wk img{width:100%;height:340px;object-fit:cover;transition:transform .7s cubic-bezier(.2,.6,.2,1)}
 .wk:hover img{transform:scale(1.035)}
 .wk.yh-card{display:block;text-decoration:none;cursor:pointer}
+/* ===== 作品区：AccordionGallery 手风琴画廊（大量项目不拥挤） ===== */
+.acc-gallery{display:flex;gap:10px;height:430px;margin-top:36px}
+.acc-item{position:relative;flex:1 1 64px;min-width:46px;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--paper-2);cursor:pointer;transition:flex-grow .75s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
+.acc-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .55s ease,transform .9s cubic-bezier(.2,.6,.2,1)}
+.acc-item .acc-title{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);writing-mode:vertical-rl;letter-spacing:5px;font-size:13px;color:var(--ink);white-space:nowrap;transition:opacity .35s ease;pointer-events:none}
+.acc-item .acc-cap{position:absolute;left:0;right:0;bottom:0;padding:36px 20px 16px;background:linear-gradient(transparent,rgba(20,18,12,.82));color:#f4f0e4;opacity:0;transition:opacity .5s ease;pointer-events:none;white-space:nowrap}
+.acc-item .acc-cap b{display:block;font-size:15px;letter-spacing:1px;font-weight:400}
+.acc-item .acc-cap small{display:block;font-size:11px;letter-spacing:1px;color:#d6cfc0;margin-top:4px}
+.acc-item .acc-cap em{display:block;font-style:normal;font-size:10.5px;letter-spacing:2px;color:var(--copper-soft);margin-top:8px}
+.acc-gallery .acc-item:hover,.acc-gallery .acc-item.active{flex-grow:4.2;box-shadow:0 22px 48px -30px rgba(32,30,24,.5)}
+.acc-gallery .acc-item:hover img,.acc-gallery .acc-item.active img{opacity:1;transform:scale(1)}
+.acc-gallery .acc-item:hover .acc-title,.acc-gallery .acc-item.active .acc-title{opacity:0}
+.acc-gallery .acc-item:hover .acc-cap,.acc-gallery .acc-item.active .acc-cap{opacity:1}
+/* 占位（待上传）item：展开时显示中央提示 */
+.acc-item.ph .acc-ph-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;opacity:0;transition:opacity .5s ease;pointer-events:none}
+.acc-item.ph .acc-ph-center .ph-name{font-family:"Noto Serif SC",serif;font-size:24px;color:var(--ink);letter-spacing:1px}
+.acc-item.ph .acc-ph-center .ph-tag{font-size:11px;letter-spacing:4px;color:var(--copper);margin-bottom:10px}
+.acc-item.ph .acc-ph-center .ph-hint{font-size:12px;color:var(--muted);letter-spacing:2px;margin-top:12px}
+.acc-gallery .acc-item.ph:hover .acc-ph-center,.acc-gallery .acc-item.ph.active .acc-ph-center{opacity:1}
+@media(max-width:900px){.acc-gallery{height:360px}}
+@media(max-width:640px){.acc-gallery{height:300px}.acc-item{min-width:36px}.acc-item .acc-title{font-size:11px}}
 .wk.h-tall img{height:520px}
 .wk.h-2 img{height:420px}
 .wk .cap{
@@ -657,28 +678,19 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       <span class="cat-en">VILLA</span>
     </div>
     <div class="cat-desc">在建筑、庭院与室内之间建立连贯的叙事，以细节承载更长久的居住体验。</div>
-    <div class="gallery g-3">
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">VILLA</div>
-          <div class="ph-name serif">别墅项目 01</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">VILLA</div>
-          <div class="ph-name serif">别墅项目 02</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">VILLA</div>
-          <div class="ph-name serif">别墅项目 03</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
+    <div class="acc-gallery">
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="别墅项目 01">
+        <span class="acc-title">别墅项目 01</span>
+        <span class="acc-ph-center"><span class="ph-tag">VILLA</span><span class="ph-name serif">别墅项目 01</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="别墅项目 02">
+        <span class="acc-title">别墅项目 02</span>
+        <span class="acc-ph-center"><span class="ph-tag">VILLA</span><span class="ph-name serif">别墅项目 02</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="别墅项目 03">
+        <span class="acc-title">别墅项目 03</span>
+        <span class="acc-ph-center"><span class="ph-tag">VILLA</span><span class="ph-name serif">别墅项目 03</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
     </div>
   </div>
     <div class="work-cat">
@@ -688,18 +700,16 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       <span class="cat-en">LARGE FLAT</span>
     </div>
     <div class="cat-desc">在开阔尺度中寻找克制的秩序，让公共区域与私人情绪自然衔接。</div>
-    <div class="gallery g-2">
-      <a class="wk yh-card" data-project="yuhu" aria-label="昱湖一号项目详情">
+    <div class="acc-gallery">
+      <div class="acc-item yh" role="button" tabindex="0" data-project="yuhu" aria-label="昱湖一号项目详情">
         <img src="assets/yuhu/render_photos/01.jpg" alt="昱湖一号 效果图" loading="lazy" decoding="async">
-        <span class="cap"><b>昱湖一号 · 全案</b><small>LARGE FLAT · 萃峯 17-1-1502</small><em class="yh-open">展开子项目 ▾</em></span>
-      </a>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">LARGE FLAT</div>
-          <div class="ph-name serif">平层项目 02</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
+        <span class="acc-title">昱湖一号 · 全案</span>
+        <span class="acc-cap"><b>昱湖一号 · 全案</b><small>LARGE FLAT · 萃峯 17-1-1502</small><em class="yh-open">展开子项目 ▾</em></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="平层项目 02">
+        <span class="acc-title">平层项目 02</span>
+        <span class="acc-ph-center"><span class="ph-tag">LARGE FLAT</span><span class="ph-name serif">平层项目 02</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
     </div>
     <div class="sub-project" id="yuhu" data-open="0">
       <div class="sp-head">
@@ -1503,21 +1513,15 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       <span class="cat-en">DUPLEX RESIDENCE</span>
     </div>
     <div class="cat-desc">在垂直尺度中重构生活的层次，让上下空间于动静转换之间自然衔接。</div>
-    <div class="gallery g-2">
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">DUPLEX RESIDENCE</div>
-          <div class="ph-name serif">跃层项目 01</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">DUPLEX RESIDENCE</div>
-          <div class="ph-name serif">跃层项目 02</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
+    <div class="acc-gallery">
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="跃层项目 01">
+        <span class="acc-title">跃层项目 01</span>
+        <span class="acc-ph-center"><span class="ph-tag">DUPLEX RESIDENCE</span><span class="ph-name serif">跃层项目 01</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="跃层项目 02">
+        <span class="acc-title">跃层项目 02</span>
+        <span class="acc-ph-center"><span class="ph-tag">DUPLEX RESIDENCE</span><span class="ph-name serif">跃层项目 02</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
     </div>
   </div>
   <div class="work-cat">
@@ -1527,28 +1531,19 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       <span class="cat-en">SHOW FLAT</span>
     </div>
     <div class="cat-desc">用清晰的场景、触感与色彩，构建能被迅速感知、也值得反复品味的生活想象。</div>
-    <div class="gallery g-3">
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">SHOW FLAT</div>
-          <div class="ph-name serif">样板房项目 01</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">SHOW FLAT</div>
-          <div class="ph-name serif">样板房项目 02</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
-      <figure class="wk ph">
-        <div class="ph-box">
-          <div class="ph-tag">SHOW FLAT</div>
-          <div class="ph-name serif">样板房项目 03</div>
-          <div class="ph-hint">效果图待上传</div>
-        </div>
-      </figure>
+    <div class="acc-gallery">
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="样板房项目 01">
+        <span class="acc-title">样板房项目 01</span>
+        <span class="acc-ph-center"><span class="ph-tag">SHOW FLAT</span><span class="ph-name serif">样板房项目 01</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="样板房项目 02">
+        <span class="acc-title">样板房项目 02</span>
+        <span class="acc-ph-center"><span class="ph-tag">SHOW FLAT</span><span class="ph-name serif">样板房项目 02</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
+      <div class="acc-item ph" role="button" tabindex="0" aria-label="样板房项目 03">
+        <span class="acc-title">样板房项目 03</span>
+        <span class="acc-ph-center"><span class="ph-tag">SHOW FLAT</span><span class="ph-name serif">样板房项目 03</span><span class="ph-hint">效果图待上传</span></span>
+      </div>
     </div>
   </div>
 </section>
@@ -2084,7 +2079,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 (function(){
   var sp = document.getElementById('yuhu');
   if(!sp) return;
-  Array.prototype.forEach.call(document.querySelectorAll('.yh-card[data-project]'), function(card){
+  Array.prototype.forEach.call(document.querySelectorAll('.acc-item[data-project]'), function(card){
     card.addEventListener('click', function(ev){
       ev.preventDefault();
       var open = sp.getAttribute('data-open') === '1';
@@ -2110,6 +2105,17 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     if(e.propertyName === 'max-height' && sp.getAttribute('data-open') === '1'){
       sp.style.maxHeight = 'none';
     }
+  });
+})();
+
+/* ===== 手风琴画廊：点击锁定展开（再点收起） ===== */
+(function(){
+  Array.prototype.forEach.call(document.querySelectorAll('.acc-gallery .acc-item'), function(item){
+    item.addEventListener('click', function(){
+      var was = item.classList.contains('active');
+      Array.prototype.forEach.call(document.querySelectorAll('.acc-gallery .acc-item'), function(x){ x.classList.remove('active'); });
+      if(!was) item.classList.add('active');
+    });
   });
 })();
 
