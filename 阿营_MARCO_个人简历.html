@@ -2152,7 +2152,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     var ti = h && h.querySelector('.sec-title');
     var de = h && h.querySelector('.sec-desc');
     var items = itemsFor(sec);
-    var tl = gsap.timeline({scrollTrigger:{trigger:sec, start:'top 70%', toggleActions:'play none none none'}});
+    var tl = gsap.timeline({scrollTrigger:{trigger:sec, start:'top 70%', toggleActions:'restart none none reverse'}});
     if(en) tl.fromTo(en, {yPercent:130, opacity:0, clipPath:'inset(0 0 100% 0)'},
                         {yPercent:0, opacity:1, clipPath:'inset(0 0 0% 0)', duration:1.0}, 0);
     if(no) tl.fromTo(no, {opacity:0, y:16}, {opacity:1, y:0, duration:.4}, .1);
@@ -2166,7 +2166,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
     var head = cat.querySelector('.cat-head');
     var desc = cat.querySelector('.cat-desc');
     var cards = cat.querySelectorAll('.gallery .wk');
-    var tl = gsap.timeline({scrollTrigger:{trigger:cat, start:'top 85%', toggleActions:'play none none none'}});
+    var tl = gsap.timeline({scrollTrigger:{trigger:cat, start:'top 85%', toggleActions:'restart none none reverse'}});
     if(head) tl.fromTo(head, {opacity:0, y:34}, {opacity:1, y:0, duration:.6}, 0);
     if(desc) tl.fromTo(desc, {opacity:0, y:20}, {opacity:1, y:0, duration:.5}, .1);
     if(cards.length) tl.fromTo(cards, {opacity:0, y:44}, {opacity:1, y:0, duration:.6, stagger:.12}, .2);
@@ -2215,10 +2215,10 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   /* ===== 图片 clip 揭开 reveal ===== */
   gsap.fromTo('.portrait img', {clipPath:'inset(0 0 100% 0)', scale:1.18},
     {clipPath:'inset(0 0 0% 0)', scale:1, duration:1.0,
-     scrollTrigger:{trigger:'.portrait-wrap', start:'top 82%', toggleActions:'play none none none'}});
+     scrollTrigger:{trigger:'.portrait-wrap', start:'top 82%', toggleActions:'restart none none reverse'}});
   gsap.fromTo('.exp-grid .exp-item', {clipPath:'inset(0 0 100% 0)', y:26, opacity:0},
     {clipPath:'inset(0 0 0% 0)', y:0, opacity:1, duration:.8, stagger:.12,
-     scrollTrigger:{trigger:'.exp-grid', start:'top 82%', toggleActions:'play none none none'}});
+     scrollTrigger:{trigger:'.exp-grid', start:'top 82%', toggleActions:'restart none none reverse'}});
 
   /* ===== hero 轻微 parallax（内容上移，背景静止以保 halftone） ===== */
   gsap.to('.hero-inner', {yPercent:-9, ease:'none',
