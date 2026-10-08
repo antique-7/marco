@@ -1,0 +1,431 @@
+[
+ {
+  "no": "01",
+  "name": "厨房电器",
+  "files": [
+   {
+    "file": "01.方太VIP客户云影系列产品方案.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "壁挂滚筒洗衣机2690.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "意式Ascoli嵌入式冰箱4980.00.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "电视海信U7k.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "西门子洗烘12099.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "西门子电器方案250116(深色冰箱）.pptx",
+    "ext": "PPTX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "西门子电器方案250116（白色冰箱）.pptx",
+    "ext": "PPTX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "02",
+  "name": "空调",
+  "files": [
+   {
+    "file": "新建 Microsoft Word 文档.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "日立中央空调+地暖+净水+新风（昱湖壹号）2.10.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号 新风300.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/02/昱湖壹号 新风300.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   },
+   {
+    "file": "昱湖壹号 新风500.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/02/昱湖壹号 新风500.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   },
+   {
+    "file": "昱湖壹号 日立空调.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/02/昱湖壹号 日立空调.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   },
+   {
+    "file": "昱湖壹号 菲斯曼地暖（阿尔波特）.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/02/昱湖壹号 菲斯曼地暖（阿尔波特）.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   }
+  ]
+ },
+ {
+  "no": "03",
+  "name": "门窗",
+  "files": [
+   {
+    "file": "百利玛门窗.xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "百利玛门窗方案.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/03/百利玛门窗方案.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   }
+  ]
+ },
+ {
+  "no": "04",
+  "name": "洁具",
+  "files": [
+   {
+    "file": "~$3.20贝朗卫浴尘林间全案订单报价（天古李洁）(1)(1)(1)(1)(1).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "恒洁卫浴洁具方案.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "拖把池.docx",
+    "ext": "DOCX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "拖把池.png",
+    "ext": "PNG",
+    "thumb": "assets/yuhu/budget_thumbs/04/拖把池.jpg",
+    "thumb_w": 900,
+    "thumb_h": 612
+   },
+   {
+    "file": "洁具报价2025.1.16（赵老师）(不锈钢盆).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "洁具报价2025.1.16（赵老师）（黑色盆）.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "05",
+  "name": "木地板",
+  "files": [
+   {
+    "file": "~$久盛地板：尘林间4-1-2-2 于老师（李洁）报价(1).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "治木行地板方案.xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "06",
+  "name": "窗帘·硬包·艺术涂料",
+  "files": [
+   {
+    "file": "Bella VISta 艺术漆.jpg",
+    "ext": "JPG",
+    "thumb": "assets/yuhu/budget_thumbs/06/Bella VISta 艺术漆.jpg",
+    "thumb_w": 890,
+    "thumb_h": 660
+   },
+   {
+    "file": "意大利威罗艺术漆.png",
+    "ext": "PNG",
+    "thumb": "assets/yuhu/budget_thumbs/06/意大利威罗艺术漆.jpg",
+    "thumb_w": 872,
+    "thumb_h": 900
+   },
+   {
+    "file": "玛曼努灰泥.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "窗帘.xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "07",
+  "name": "床垫",
+  "files": [
+   {
+    "file": "澳洲造梦者 VIP贵宾健康睡眠方案及报价.xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "08",
+  "name": "墙地砖",
+  "files": [
+   {
+    "file": "2025.2.10昱湖壹号翠峰 简一预算表2.xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "瓷砖预算单1.15(陶集集).xls",
+    "ext": "XLS",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "虫二1.16预算单.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "赵老师工地岩板报价 - 最新.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "09",
+  "name": "定制",
+  "files": [
+   {
+    "file": "~$OPPEIN橱柜预算-尘林间.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号-ART FANPIN 梵品定制报价清单25.01.16(1).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号-ART FANPIN 梵品定制报价清单25.02.10.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "10",
+  "name": "智能·灯具·开关",
+  "files": [
+   {
+    "file": "a66fbe4b0a82765167a9f5eeee55483.png",
+    "ext": "PNG",
+    "thumb": "assets/yuhu/budget_thumbs/10/a66fbe4b0a82765167a9f5eeee55483.jpg",
+    "thumb_w": 900,
+    "thumb_h": 222
+   },
+   {
+    "file": "ec16f830f00c376c39ecf9ad67a1fd1.png",
+    "ext": "PNG",
+    "thumb": "assets/yuhu/budget_thumbs/10/ec16f830f00c376c39ecf9ad67a1fd1.jpg",
+    "thumb_w": 900,
+    "thumb_h": 315
+   },
+   {
+    "file": "昱湖壹号欧瑞博.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号萃峯17-1-1502灯光方案2025.1.17.dwg(有线智能）.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/10/昱湖壹号萃峯17-1-1502灯光方案2025.1.17.dwg(有线智能）.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   }
+  ]
+ },
+ {
+  "no": "11",
+  "name": "软装",
+  "files": [
+   {
+    "file": "25.2.10家具报价 20250210.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "25.2.10家具报价.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "全案预算意见反馈-20250210.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "家具报价.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号萃峯17-1-1502（全案明细) 20250210.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   }
+  ]
+ },
+ {
+  "no": "12",
+  "name": "基装预算",
+  "files": [
+   {
+    "file": "25.2.5 昱湖壹号17-1-1502  昱辰设计基装预算模板.xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "土建.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/12/土建.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   },
+   {
+    "file": "基装预算.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/12/基装预算.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   },
+   {
+    "file": "基装预算汇总.png",
+    "ext": "PNG",
+    "thumb": "assets/yuhu/budget_thumbs/12/基装预算汇总.jpg",
+    "thumb_w": 900,
+    "thumb_h": 394
+   },
+   {
+    "file": "昱湖壹号萃峯17-1-1502(施工全流程).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "昱湖壹号萃峯17-1-1502（全案明细).xlsx",
+    "ext": "XLSX",
+    "thumb": null,
+    "thumb_w": null,
+    "thumb_h": null
+   },
+   {
+    "file": "木基层.pdf",
+    "ext": "PDF",
+    "thumb": "assets/yuhu/budget_thumbs/12/木基层.jpg",
+    "thumb_w": 900,
+    "thumb_h": 636
+   }
+  ]
+ }
+]
