@@ -169,6 +169,12 @@ section{padding:110px 0}
   .work-cat.dock-adj{transform:scale(.98)}
   .work-cat .cat-head{transition:transform .7s cubic-bezier(.22,1,.36,1)}
 }
+/* Dock 式项目卡动效：hover 当前卡放大浮起、同排相邻卡推开 */
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+  .gallery .wk,.gallery .yh-card{position:relative;transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
+  .gallery .wk.dock-active,.gallery .yh-card.dock-active{transform:scale(1.05);z-index:2;box-shadow:0 26px 60px -36px rgba(90,60,20,.5)}
+  .gallery .wk.dock-adj,.gallery .yh-card.dock-adj{transform:scale(.965)}
+}
 .cat-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .cat-idx{font-family:"Noto Serif SC",serif;font-size:13px;letter-spacing:2px;color:var(--copper)}
 .cat-name{font-size:clamp(28px,4vw,40px);font-weight:400;letter-spacing:2px}
@@ -2170,6 +2176,27 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
       cat.addEventListener('mouseleave', function(){
         cat.classList.remove('dock-active');
         cats.forEach(function(c){ c.classList.remove('dock-adj'); });
+      });
+    });
+  })();
+
+  /* ===== 作品区内项目卡片 Dock 式 hover（当前卡放大浮起、同排相邻卡推开） ===== */
+  (function(){
+    if(!window.matchMedia('(hover:hover) and (prefers-reduced-motion: no-preference)').matches) return;
+    document.querySelectorAll('.gallery').forEach(function(gal){
+      var cards = [].slice.call(gal.children).filter(function(c){
+        return c.classList.contains('wk') || c.classList.contains('yh-card');
+      });
+      cards.forEach(function(card,i){
+        card.addEventListener('mouseenter', function(){
+          card.classList.add('dock-active');
+          if(i>0) cards[i-1].classList.add('dock-adj');
+          if(i<cards.length-1) cards[i+1].classList.add('dock-adj');
+        });
+        card.addEventListener('mouseleave', function(){
+          card.classList.remove('dock-active');
+          cards.forEach(function(c){ c.classList.remove('dock-adj'); });
+        });
       });
     });
   })();
