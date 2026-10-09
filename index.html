@@ -90,6 +90,14 @@ nav{
   .hero-stats{flex-wrap:wrap;gap:22px}
   .stat{margin-right:26px;padding-right:26px}
 }
+@media(max-width:640px){
+  .hero-inner{padding:104px 0 66px}
+  .hero-name{font-size:17vw;line-height:1.04}
+  .hero-name .cn{display:block;margin-left:0;margin-top:.14em;font-size:.36em;letter-spacing:8px}
+  .hero-stats{flex-wrap:wrap;gap:20px}
+  .stat{margin-right:22px;padding-right:22px}
+  .stat b{font-size:26px}
+}
 
 /* ===== 分区通用 ===== */
 section{padding:110px 0}
@@ -213,7 +221,16 @@ section{padding:110px 0}
 .acc-item.ph .acc-ph-center .ph-hint{font-size:12px;color:var(--muted);letter-spacing:2px;margin-top:12px}
 .acc-gallery .acc-item.ph:hover .acc-ph-center,.acc-gallery .acc-item.ph.active .acc-ph-center{opacity:1}
 @media(max-width:900px){.acc-gallery{height:360px}}
-@media(max-width:640px){.acc-gallery{height:300px}.acc-item{min-width:36px}.acc-item .acc-title{font-size:11px}}
+@media(max-width:640px){
+  .acc-gallery{flex-direction:column;height:auto;gap:14px;margin-top:26px}
+  .acc-item{flex:1 1 auto;min-width:0;height:168px}
+  .acc-item img{opacity:1}
+  .acc-item.yh img{object-fit:cover;object-position:center}
+  .acc-item .acc-title{display:none}
+  .acc-item .acc-cap{opacity:1;padding:26px 16px 12px}
+  .acc-gallery .acc-item:hover,.acc-gallery .acc-item.active{flex-grow:0;box-shadow:none}
+  .acc-item.ph .acc-ph-center{position:static;opacity:1;transform:none}
+}
 .wk.h-tall img{height:520px}
 .wk.h-2 img{height:420px}
 .wk .cap{
