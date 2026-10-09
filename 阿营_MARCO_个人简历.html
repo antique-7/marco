@@ -329,8 +329,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .carousel-track{display:flex;will-change:transform;transform:translateX(0);transition:transform .7s cubic-bezier(.22,1,.36,1)}
 .carousel-track .work-cat{flex:0 0 100%;min-width:100%}
 @media(min-width:1000px){.carousel-track .work-cat{padding-left:64px;padding-right:64px}}
-.carousel-nav{display:flex;align-items:center;justify-content:flex-end;gap:14px;padding:0 40px;margin-top:2px;margin-bottom:26px}
-@media(min-width:1000px){.carousel-nav{padding:0 64px}}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:38px}
 .carousel-nav button{background:none;border:1px solid var(--line);color:var(--ink);width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .35s ease,color .35s ease,background .35s ease}
 .carousel-nav button:hover{border-color:var(--copper);color:var(--copper);background:rgba(216,161,90,.06)}
 .carousel-dots{display:flex;gap:10px}
@@ -707,12 +706,6 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
       <div class="sec-title-en">SELECTED WORKS</div>
       <div class="sec-desc">以空间类型为线索，呈现不同居住场景中的尺度感、情绪与生活秩序。图片陆续补充中。</div>
     </div>
-  </div>
-
-  <div class="carousel-nav">
-    <button class="carousel-prev" aria-label="上一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    <div class="carousel-dots" role="tablist" aria-label="作品分类"></div>
-    <button class="carousel-next" aria-label="下一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 
   <div class="works-carousel"><div class="carousel-track">
@@ -1591,6 +1584,11 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
       </div>
     </div>
   </div>
+  </div>
+  <div class="carousel-nav">
+    <button class="carousel-prev" aria-label="上一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="carousel-dots" role="tablist" aria-label="作品分类"></div>
+    <button class="carousel-next" aria-label="下一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 </section>
 
