@@ -2188,19 +2188,6 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
   }
   document.querySelector('.carousel-prev').addEventListener('click', function(){ go(idx-1); });
   document.querySelector('.carousel-next').addEventListener('click', function(){ go(idx+1); });
-
-  /* 手机端触摸横滑切换分类（在项目画廊上滑动时不触发） */
-  var startX = null;
-  track.addEventListener('touchstart', function(e){
-    if(e.target.closest('.acc-gallery')){ startX = null; return; }
-    startX = e.touches[0].clientX;
-  }, {passive:true});
-  track.addEventListener('touchend', function(e){
-    if(startX === null) return;
-    var dx = e.changedTouches[0].clientX - startX;
-    startX = null;
-    if(Math.abs(dx) > 48) go(idx + (dx < 0 ? 1 : -1));
-  }, {passive:true});
 })();
 
 </script>
