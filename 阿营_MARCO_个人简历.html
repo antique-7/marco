@@ -303,7 +303,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .toc-item p{font-size:13px;color:var(--ink-soft)}
 /* BorderGlow 发光描边：卡片边缘一条铜金色亮弧缓慢扫过 */
 @property --border-angle{syntax:"<angle>";initial-value:0deg;inherits:false}
-.bt-pic::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--border-angle,0deg),transparent 0deg 296deg,rgba(216,161,90,.28) 316deg,rgba(216,161,90,.9) 342deg,rgba(229,184,120,.95) 350deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-glow 6s linear infinite}
+.bt-pic::before{content:"";position:absolute;inset:0;border-radius:16px;padding:1.5px;pointer-events:none;z-index:1;background:conic-gradient(from var(--border-angle,0deg),transparent 0deg 282deg,rgba(141,167,120,.5) 308deg,rgba(165,188,140,.95) 334deg,rgba(190,208,168,1) 348deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:border-glow 5s linear infinite}
 .bt-pic:nth-child(5)::before{animation-delay:-1.5s}
 .bt-pic:nth-child(6)::before{animation-delay:-3s}
 .bt-pic:nth-child(7)::before{animation-delay:-4.5s}
@@ -312,7 +312,7 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .bt-pic:nth-child(10)::before{animation-delay:-3.8s}
 .bt-pic:nth-child(11)::before{animation-delay:-5.3s}
 @keyframes border-glow{to{--border-angle:360deg}}
-@media (prefers-reduced-motion:reduce){.bt-pic::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 300deg,rgba(216,161,90,.4) 350deg,transparent 360deg)}}
+@media (prefers-reduced-motion:reduce){.bt-pic::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 288deg,rgba(141,167,120,.55) 330deg,rgba(190,208,168,.9) 348deg,transparent 360deg)}}
 /* ===== 精选作品：唯一主目录（可折叠） ===== */
 .works-master{max-height:0;overflow:hidden;transition:max-height .9s cubic-bezier(.22,1,.36,1)}
 .works-master[data-open="1"]{max-height:6000px;overflow:visible}
