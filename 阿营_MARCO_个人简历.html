@@ -342,7 +342,8 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 .bt-tags .tag b{font-family:"Noto Serif SC",serif;color:var(--copper);font-size:12px;letter-spacing:1px}
 .bt-tags .tag span{font-size:12.5px;color:var(--ink)}
 /* 图卡 */
-.bt-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bt-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;cursor:zoom-in}
+.bt-cert img,.bt-spass img,.bt-cardv img,.bt-cardr img{object-fit:contain;background:#fbfaf7;padding:12px}
 .bt-pic figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(transparent,rgba(20,18,12,.78));color:#f2ecde;font-size:12px;letter-spacing:.5px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .bt-cert{grid-column:span 5;grid-row:span 2}
 .bt-spass{grid-column:span 3}
@@ -363,7 +364,13 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   .bt-pic img{position:static;height:178px;width:100%}
 }
 
-
+/* ===== 图片双击放大查看器（lightbox） ===== */
+.lb{position:fixed;inset:0;z-index:1200;display:flex;align-items:center;justify-content:center;background:rgba(12,11,8,.9);opacity:0;pointer-events:none;transition:opacity .28s ease}
+body.lb-open .lb{opacity:1;pointer-events:auto}
+.lb-close{position:absolute;top:20px;right:24px;background:none;border:0;color:#f2ecde;font-size:32px;line-height:1;cursor:pointer;padding:8px;z-index:2}
+.lb-frame{max-width:min(92vw,1280px);max-height:86vh;display:flex;align-items:center;justify-content:center}
+.lb-frame img{max-width:92vw;max-height:86vh;object-fit:contain;background:#fbfaf7;border-radius:4px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb-hint{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:rgba(242,236,222,.7);font-size:12px;letter-spacing:2px}
 /* ===== 项目专题：昱湖一号 ===== */
 .yuhu{background:var(--paper-2)}
 .yuhu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -2345,6 +2352,48 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
   }
   window.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+})();
+</script>
+
+<!-- ===== 图片双击放大查看器 ===== -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="lb-close" id="lb-close" aria-label="关闭">&times;</button>
+  <figure class="lb-frame"><img id="lb-img" alt=""></figure>
+  <div class="lb-hint">点击任意处关闭</div>
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var open = false;
+  function show(src, alt){
+    if(!src) return;
+    lbImg.src = src; lbImg.alt = alt || '';
+    lb.setAttribute('aria-hidden','false');
+    document.body.classList.add('lb-open');
+    open = true;
+  }
+  function hide(){
+    lb.setAttribute('aria-hidden','true');
+    document.body.classList.remove('lb-open');
+    open = false;
+  }
+  document.querySelectorAll('.bt-pic').forEach(function(f){
+    f.addEventListener('dblclick', function(e){
+      e.preventDefault();
+      var i = f.querySelector('img'); if(i) show(i.src, i.alt);
+    });
+    f.addEventListener('click', function(e){
+      e.preventDefault();
+      var i = f.querySelector('img'); if(i) show(i.src, i.alt);
+    });
+  });
+  lb.addEventListener('click', function(e){
+    if(e.target === lb || e.target === document.getElementById('lb-close') || e.target.classList.contains('lb-hint')) hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && open) hide();
+  });
 })();
 </script>
 
