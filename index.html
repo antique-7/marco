@@ -162,16 +162,7 @@ section{padding:110px 0}
 /* ===== 作品 ===== */
 .works{background:var(--paper)}
 .works .container{padding:0}
-.work-cat{padding:110px 40px;border-top:1px solid var(--line);position:relative}
-@media(min-width:1000px){.work-cat{padding-left:64px;padding-right:64px}}
-/* Dock 式分类动效：hover 当前块放大浮起、相邻块推开 */
-@media(hover:hover) and (prefers-reduced-motion:no-preference){
-  .work-cat{transition:transform .7s cubic-bezier(.22,1,.36,1),box-shadow .7s cubic-bezier(.22,1,.36,1)}
-  .work-cat.dock-active{transform:scale(1.028);z-index:3;box-shadow:0 34px 80px -44px rgba(90,60,20,.55)}
-  .work-cat.dock-active .cat-head{transform:scale(1.04);transform-origin:left center}
-  .work-cat.dock-adj{transform:scale(.98)}
-  .work-cat .cat-head{transition:transform .7s cubic-bezier(.22,1,.36,1)}
-}
+.work-cat{padding:70px 40px 30px;position:relative}
 /* Dock 式项目卡动效：hover 当前卡放大浮起、同排相邻卡推开 */
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
   .gallery .wk,.gallery .yh-card{position:relative;transition:transform .6s cubic-bezier(.22,1,.36,1),box-shadow .6s cubic-bezier(.22,1,.36,1)}
@@ -314,11 +305,17 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 @keyframes border-glow{to{--border-angle:360deg}}
 @media (prefers-reduced-motion:reduce){.bt-pic::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 288deg,rgba(141,167,120,.55) 330deg,rgba(190,208,168,.9) 348deg,transparent 360deg)}}
 /* ===== 精选作品：唯一主目录（可折叠） ===== */
-.works-master{max-height:0;overflow:hidden;transition:max-height .9s cubic-bezier(.22,1,.36,1)}
-.works-master[data-open="1"]{max-height:6000px;overflow:visible}
-.works-master-head{cursor:pointer;position:relative}
-.works-master-head .master-open{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:12px;letter-spacing:3px;color:var(--copper);border:1px solid var(--copper);border-radius:999px;padding:10px 22px;transition:background .35s ease,color .35s ease}
-.works-master-head:hover .master-open{background:var(--copper);color:var(--paper)}
+.works-carousel{position:relative;overflow:hidden}
+.carousel-track{display:flex;will-change:transform;transform:translateX(0);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.carousel-track .work-cat{flex:0 0 100%;min-width:100%}
+@media(min-width:1000px){.carousel-track .work-cat{padding-left:64px;padding-right:64px}}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:38px}
+.carousel-nav button{background:none;border:1px solid var(--line);color:var(--ink);width:48px;height:48px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .35s ease,color .35s ease,background .35s ease}
+.carousel-nav button:hover{border-color:var(--copper);color:var(--copper);background:rgba(216,161,90,.06)}
+.carousel-dots{display:flex;gap:10px}
+.carousel-dots span{width:7px;height:7px;border-radius:50%;background:var(--line);cursor:pointer;transition:background .3s ease,transform .3s ease}
+.carousel-dots span:hover{background:var(--copper-soft)}
+.carousel-dots span.active{background:var(--copper);transform:scale(1.3)}
 /* ===== 履历经历 · MagicBento 融合网格 ===== */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:148px;grid-auto-flow:dense;gap:16px;margin-top:40px}
 .bt{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--paper)}
@@ -683,16 +680,15 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
 
 <section class="works" id="works">
   <div class="container">
-    <div class="sec-head works-master-head" role="button" tabindex="0" aria-expanded="false">
+    <div class="sec-head">
       <div class="sec-no">05 — SELECTED WORKS</div>
       <h2 class="sec-title serif">精选作品</h2>
       <div class="sec-title-en">SELECTED WORKS</div>
       <div class="sec-desc">以空间类型为线索，呈现不同居住场景中的尺度感、情绪与生活秩序。图片陆续补充中。</div>
-      <span class="master-open">展开四分类 ▾</span>
     </div>
   </div>
 
-  <div class="works-master" data-open="0" aria-hidden="true">
+  <div class="works-carousel"><div class="carousel-track">
   <div class="work-cat">
     <div class="cat-head">
       <span class="cat-idx">01</span>
@@ -1569,6 +1565,11 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
     </div>
   </div>
   </div>
+  <div class="carousel-nav">
+    <button class="carousel-prev" aria-label="上一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="carousel-dots" role="tablist" aria-label="作品分类"></div>
+    <button class="carousel-next" aria-label="下一分类" aria-controls="works"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
 </section>
 
 <!-- ===== 结尾 ===== -->
@@ -2142,37 +2143,32 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
   });
 })();
 
-/* ===== 精选作品：唯一主目录 折叠/展开（真实高度过渡） ===== */
+/* ===== 精选作品：旋转木马（四分类轮播） ===== */
 (function(){
-  var head = document.querySelector('.works-master-head');
-  var master = document.querySelector('.works-master');
-  if(!head || !master) return;
-  var lbl = head.querySelector('.master-open');
-  function setOpen(open){
-    master.setAttribute('data-open', open ? '1' : '0');
-    master.setAttribute('aria-hidden', open ? 'false' : 'true');
-    head.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if(open){
-      master.style.maxHeight = '0px';
-      void master.offsetHeight;
-      master.style.maxHeight = master.scrollHeight + 'px';
-    } else {
-      master.style.maxHeight = master.scrollHeight + 'px';
-      void master.offsetHeight;
-      master.style.maxHeight = '0px';
-    }
-    if(lbl) lbl.textContent = open ? '收起四分类 ▲' : '展开四分类 ▾';
+  var track = document.querySelector('.carousel-track');
+  var dotsEl = document.querySelector('.carousel-dots');
+  if(!track || !dotsEl) return;
+  var slides = track.querySelectorAll('.work-cat');
+  var idx = 0;
+  Array.prototype.forEach.call(slides, function(s, i){
+    var d = document.createElement('span');
+    d.setAttribute('role','tab');
+    d.setAttribute('aria-label','第 '+(i+1)+' 分类');
+    d.setAttribute('tabindex','0');
+    if(i===0) d.classList.add('active');
+    d.addEventListener('click', function(){ go(i); });
+    d.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); go(i); } });
+    dotsEl.appendChild(d);
+  });
+  var dots = dotsEl.children;
+  function go(i){
+    idx = (i + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (idx*100) + '%)';
+    for(var j=0;j<dots.length;j++) dots[j].classList.toggle('active', j===idx);
     if(window.ScrollTrigger) window.ScrollTrigger.refresh();
   }
-  head.addEventListener('click', function(){
-    var open = master.getAttribute('data-open') === '1';
-    setOpen(!open);
-  });
-  master.addEventListener('transitionend', function(e){
-    if(e.propertyName === 'max-height' && master.getAttribute('data-open') === '1'){
-      master.style.maxHeight = 'none';
-    }
-  });
+  document.querySelector('.carousel-prev').addEventListener('click', function(){ go(idx-1); });
+  document.querySelector('.carousel-next').addEventListener('click', function(){ go(idx+1); });
 })();
 
 </script>
@@ -2223,36 +2219,6 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
     if(de) tl.fromTo(de, {opacity:0, y:20}, {opacity:1, y:0, duration:.5}, .28);
     if(items.length) tl.fromTo(items, {opacity:0, y:46}, {opacity:1, y:0, duration:.7, stagger:.1}, .38);
   });
-
-  /* ===== 作品分类（各自触发） ===== */
-  gsap.utils.toArray('.work-cat').forEach(function(cat){
-    var head = cat.querySelector('.cat-head');
-    var desc = cat.querySelector('.cat-desc');
-    var cards = cat.querySelectorAll('.gallery .wk');
-    var tl = gsap.timeline({scrollTrigger:{trigger:cat, start:'top 85%', toggleActions:'restart none none reverse'}});
-    if(head) tl.fromTo(head, {opacity:0, y:34}, {opacity:1, y:0, duration:.6}, 0);
-    if(desc) tl.fromTo(desc, {opacity:0, y:20}, {opacity:1, y:0, duration:.5}, .1);
-    if(cards.length) tl.fromTo(cards, {opacity:0, y:44}, {opacity:1, y:0, duration:.6, stagger:.12}, .2);
-  });
-
-  /* ===== 作品分类 Dock 式 hover（当前放大 + 相邻推开） ===== */
-  (function(){
-    if(!window.matchMedia('(hover:hover) and (prefers-reduced-motion: no-preference)').matches) return;
-    var cats = gsap.utils.toArray('.work-cat');
-    function sibs(c){ return cats.filter(function(x){return x!==c;}); }
-    cats.forEach(function(cat){
-      cat.addEventListener('mouseenter', function(){
-        var i = cats.indexOf(cat);
-        cat.classList.add('dock-active');
-        if(i>0) cats[i-1].classList.add('dock-adj');
-        if(i<cats.length-1) cats[i+1].classList.add('dock-adj');
-      });
-      cat.addEventListener('mouseleave', function(){
-        cat.classList.remove('dock-active');
-        cats.forEach(function(c){ c.classList.remove('dock-adj'); });
-      });
-    });
-  })();
 
   /* ===== 作品区内项目卡片 Dock 式 hover（当前卡放大浮起、同排相邻卡推开） ===== */
   (function(){
