@@ -68,7 +68,7 @@ nav{
   content:"";position:absolute;inset:0;
   background:linear-gradient(100deg, rgba(27,25,19,.96) 15%, rgba(27,25,19,.55) 55%, rgba(27,25,19,.25) 100%);
 }
-.hero-inner{position:relative;z-index:2;padding:150px 0 90px;width:100%}
+.hero-inner{position:relative;z-index:2;padding-top:150px;padding-bottom:90px;width:100%}
 .hero-tag{
   display:flex;align-items:center;gap:14px;
   font-size:12px;letter-spacing:4px;color:var(--copper-soft);margin-bottom:34px;
@@ -91,7 +91,7 @@ nav{
   .stat{margin-right:26px;padding-right:26px}
 }
 @media(max-width:640px){
-  .hero-inner{padding:104px 0 66px}
+  .hero-inner{padding-top:104px;padding-bottom:66px}
   .hero-name{font-size:17vw;line-height:1.04}
   .hero-name .cn{display:block;margin-left:0;margin-top:.14em;font-size:.36em;letter-spacing:8px}
   .hero-stats{flex-wrap:wrap;gap:20px}
@@ -170,6 +170,8 @@ section{padding:110px 0}
 /* ===== 作品 ===== */
 .works{background:var(--paper)}
 .works .container{padding:0}
+.works .sec-head{padding:0 40px}
+@media(max-width:760px){.works .sec-head{padding:0 22px}}
 .work-cat{padding:70px 40px 30px;position:relative}
 /* Dock 式项目卡动效：hover 当前卡放大浮起、同排相邻卡推开 */
 @media(hover:hover) and (prefers-reduced-motion:no-preference){
