@@ -428,7 +428,7 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
 .ylb-stage{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
 .ylb-img{max-width:100%;max-height:100%;object-fit:contain;background:#14120e}
 .ylb-count{position:absolute;top:16px;right:0;font-family:"Noto Serif SC",serif;font-size:15px;letter-spacing:2px;color:#cdc4ac}
-.ylb-close{position:absolute;top:-54px;right:0;z-index:5;background:none;border:none;color:#cdc4ac;cursor:pointer;padding:8px;transition:color .2s}
+.ylb-close{position:fixed;top:16px;right:18px;z-index:6;background:rgba(14,13,10,.55);border:1px solid rgba(232,226,211,.28);border-radius:50%;color:#efe9d8;cursor:pointer;width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:22px;line-height:1;transition:color .2s,background .2s}
 .ylb-close:hover{color:#fff}
 .ylb-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:5;background:rgba(0,0,0,.28);border:1px solid rgba(232,226,211,.18);color:#e8e2d3;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
 .ylb-nav:hover{background:rgba(169,143,94,.3);color:#fff}
@@ -437,7 +437,7 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
 .ylb-thumbs img{width:84px;height:58px;object-fit:cover;flex:none;cursor:pointer;border:2px solid transparent;opacity:.5;transition:opacity .2s,border-color .2s}
 .ylb-thumbs img:hover{opacity:1}
 .ylb-thumbs img.active{border-color:var(--copper);opacity:1}
-@media(max-width:820px){.ylb-shell{width:96vw;height:94vh}.ylb-prev{left:2px}.ylb-next{right:2px}.ylb-close{top:-52px}.ylb-nav{width:40px;height:40px}}
+@media(max-width:820px){.ylb-shell{width:96vw;height:94vh}.ylb-prev{left:2px}.ylb-next{right:2px}.ylb-close{top:14px;right:12px;width:38px;height:38px;font-size:20px}.ylb-nav{width:40px;height:40px}}
 
 
 /* ===== 昱湖一号 可折叠目录 ===== */
@@ -2087,11 +2087,13 @@ body.lb-open .lb{opacity:1;pointer-events:auto}
     else if(e.key === 'ArrowLeft') stepYg(-1);
     else if(e.key === 'ArrowRight') stepYg(1);
   });
-  var tx = 0;
-  lb.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; }, {passive:true});
+  var tx = 0, ty = 0;
+  lb.addEventListener('touchstart', function(e){ tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, {passive:true});
   lb.addEventListener('touchend', function(e){
     var dx = e.changedTouches[0].clientX - tx;
-    if(Math.abs(dx) > 40) stepYg(dx < 0 ? 1 : -1);
+    var dy = e.changedTouches[0].clientY - ty;
+    /* 仅当水平位移明显大于垂直位移时才判定为横向切换，避免上下滑动误触 */
+    if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.5) stepYg(dx < 0 ? 1 : -1);
   }, {passive:true});
 })();
 </script>
