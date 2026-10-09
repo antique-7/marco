@@ -21,6 +21,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
+html,body{overflow-x:hidden}
 body{
   font-family:"Noto Sans SC","Microsoft YaHei",system-ui,sans-serif;
   color:var(--ink);background:var(--paper);line-height:1.7;
@@ -325,8 +326,8 @@ footer{padding:26px 0;background:var(--night);border-top:1px solid rgba(232,226,
 @keyframes border-glow{to{--border-angle:360deg}}
 @media (prefers-reduced-motion:reduce){.bt-pic::before{animation:none;background:conic-gradient(from 210deg,transparent 0deg 288deg,rgba(141,167,120,.55) 330deg,rgba(190,208,168,.9) 348deg,transparent 360deg)}}
 /* ===== 精选作品：唯一主目录（可折叠） ===== */
-.works-carousel{position:relative;overflow:hidden}
-.carousel-track{display:flex;will-change:transform;transform:translateX(0);transition:transform .7s cubic-bezier(.22,1,.36,1)}
+.works-carousel{position:relative;overflow:hidden;touch-action:pan-y;overscroll-behavior-x:none}
+.carousel-track{display:flex;will-change:transform;transform:translateX(0);transition:transform .7s cubic-bezier(.22,1,.36,1);touch-action:pan-y;overscroll-behavior-x:none}
 .carousel-track .work-cat{flex:0 0 100%;min-width:100%}
 @media(min-width:1000px){.carousel-track .work-cat{padding-left:64px;padding-right:64px}}
 .carousel-nav{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:38px}
